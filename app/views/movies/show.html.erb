@@ -48,8 +48,56 @@
 
 
 
-  <ul>
-    <% Character.where(:movie_id => @movie.id).each do |character|  %>
-    <li><a href="/movies/<%= @movie.id %>"><%= character.name %></a></li>
-    <% end  %>
-  </ul>
+<ul>
+  <% Character.where(:movie_id => @movie.id).each do |character|  %>
+  <li><a href="/movies/<%= @movie.id %>"><%= character.name %></a></li>
+  <% end  %>
+</ul>
+
+<div>
+  <h1>Add a Character</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_character" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for movie_id -->
+      <div class="form-group">
+
+        <input type="hidden" id="movie_id" name="movie_id" placeholder="Movie" class="form-control" value="<%= @movie.id %>">
+
+      </div>
+
+      <!-- Label and input for actor_id -->
+      <div class="form-group">
+        <label for="actor_id" class="control-label">
+          Actor
+        </label>
+
+        <input type="text" id="actor_id" name="actor_id" placeholder="Actor" class="form-control">
+      </div>
+
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Name
+        </label>
+
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control">
+      </div>
+
+      <button class="btn btn-success">
+        Create Character
+      </button>
+      or
+      <a href="/characters">Cancel</a>
+    </form>
+  </div>
+</div>
+
+<div>
+  <a href="/movies/new">Add a New Movie</a>
+</div>
