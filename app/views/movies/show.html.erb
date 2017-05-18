@@ -30,7 +30,8 @@
 
       <dt>Character Count</dt>
       <dd>
-        <%= Character.where(:movie_id => @movie.id).count %>
+        <!-- <%= Character.where(:movie_id => @movie.id).count %> -->
+        <%= @movie.characters.count %>
       </dd>
 
     </dl>
