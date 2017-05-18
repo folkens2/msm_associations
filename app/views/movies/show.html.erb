@@ -50,7 +50,7 @@
 
 <ul>
   <% Character.where(:movie_id => @movie.id).each do |character|  %>
-  <li><a href="/movies/<%= @movie.id %>"><%= character.name %></a></li>
+  <li><%= Actor.find(character.actor_id).name %></li>
   <% end  %>
 </ul>
 
