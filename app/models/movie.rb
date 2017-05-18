@@ -13,4 +13,7 @@ class Movie < ApplicationRecord
   #  - description: no rules
   #  - image_url: no rules
 
+  # Adding a method for finding a director
+  belongs_to(:director, :class_name => "Director", :foreign_key => "director_id")
+
 end
